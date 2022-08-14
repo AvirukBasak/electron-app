@@ -1,5 +1,4 @@
 const {
-    populatePreloadElementList,
     setText,
     setHTML,
     app
@@ -14,7 +13,5 @@ const main = (argc, argv) => {
 }
 
 module.exports = {
-    populatePreloadElementList,
-    app,
     main
 };

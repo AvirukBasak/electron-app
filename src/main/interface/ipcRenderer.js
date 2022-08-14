@@ -1,9 +1,9 @@
 const { ipcRenderer } = require('electron');
 
-var VAR_ELEMENTS = [];
+process.globalvars.VAR_ELEMENTS = [];
 
 const populatePreloadElementList = () => {
-    VAR_ELEMENTS = document.querySelectorAll('val');
+    process.globalvars.VAR_ELEMENTS = document.querySelectorAll('val');
 }
 
 /**
@@ -12,7 +12,7 @@ const populatePreloadElementList = () => {
  * @param { string } text The text to be set
  */
 const setText = (valname, text, flaghtml = false) => {
-    for (const el of VAR_ELEMENTS)
+    for (const el of process.globalvars.VAR_ELEMENTS)
         if (el && el.hasAttribute(valname)) {
             if (flaghtml)
                 el.innerHTML = text;
@@ -65,12 +65,14 @@ const app = {
         append(path, data) {
             ipcRenderer.send('app.file.append', path, data);
         }
+    },
+    quit(exitcode = 0) {
+        ipcRenderer.send('app.quit', exitcode);
     }
 };
 
 module.exports = {
     ipcRenderer,
-    VAR_ELEMENTS,
     populatePreloadElementList,
     setText,
     setHTML,

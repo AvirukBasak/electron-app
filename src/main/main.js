@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron');
+const globalvars = require('./globalvars.js');
 const { ipcMain } = require('./interface/ipcMain.js');
 const path = require('path');
 

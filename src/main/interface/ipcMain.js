@@ -1,4 +1,4 @@
-const { ipcMain } = require('electron');
+const { app, ipcMain } = require('electron');
 const fs = require('fs');
 
 // frontend-backend interface
@@ -17,6 +17,12 @@ ipcMain.on('app.file.read', (event, path) => {
 ipcMain.on('app.file.write', (event, path, data) => fs.writeFile(path, data));
 ipcMain.on('app.file.append', (event, path, data) => fs.appendFile(path, data));
 
+ipcMain.on('app.quit', (event, exitcode) => {
+    app.quit(exitcode);
+    process.exit(exitcode);
+});
+
 module.exports = {
+    app,
     ipcMain
 };

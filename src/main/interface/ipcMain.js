@@ -1,4 +1,5 @@
 const { ipcMain } = require('electron');
+const fs = require('fs');
 
 // frontend-backend interface
 ipcMain.on('app.console.log', (event, msg) => console.log(msg));

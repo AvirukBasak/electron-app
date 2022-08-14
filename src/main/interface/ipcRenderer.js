@@ -71,7 +71,6 @@ const app = {
 module.exports = {
     ipcRenderer,
     VAR_ELEMENTS,
-    VAR_ELEMENTS,
     populatePreloadElementList,
     setText,
     setHTML,

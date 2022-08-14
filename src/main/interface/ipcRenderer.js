@@ -61,6 +61,9 @@ const app = {
         },
         write(path, data) {
             ipcRenderer.send('app.file.write', path, data);
+        },
+        append(path, data) {
+            ipcRenderer.send('app.file.append', path, data);
         }
     }
 };

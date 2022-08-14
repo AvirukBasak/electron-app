@@ -15,6 +15,7 @@ ipcMain.on('app.file.read', (event, path) => {
 });
 
 ipcMain.on('app.file.write', (event, path, data) => fs.writeFile(path, data));
+ipcMain.on('app.file.append', (event, path, data) => fs.appendFile(path, data));
 
 module.exports = {
     ipcMain

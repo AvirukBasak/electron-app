@@ -1,5 +1,10 @@
 const { app, BrowserWindow } = require('electron');
+const { ipcMain } = require('./interface.js');
+const consl = require('console');
 const path = require('path');
+const fs = require('fs');
+
+app.consl = new consl.Console(process.stdout, process.stderr);
 
 const createWindow = () => {
     const mainWindow = new BrowserWindow({

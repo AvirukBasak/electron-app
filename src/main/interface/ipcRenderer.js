@@ -32,7 +32,7 @@ const app = {
     argc: process.argv.length,
     argv: process.argv,
     dirname: __dirname,
-    cwd: process.cwd,
+    cwd: process.cwd(),
     console: {
         log(msg) {
             ipcRenderer.send('app.console.log', msg.toString());

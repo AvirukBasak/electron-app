@@ -1,31 +1,35 @@
 const { ipcRenderer } = require('electron');
 
-var TEXT_ELEMENTS = [];
-var HTML_ELEMENTS = [];
+var VAR_ELEMENTS = [];
 
 const populatePreloadElementList = () => {
-    TEXT_ELEMENTS = document.querySelectorAll('txt');
-    HTML_ELEMENTS = document.querySelectorAll('var');
+    VAR_ELEMENTS = document.querySelectorAll('val');
 }
 
-// sets text values to DOM var elements
-const setText = (varname, text) => {
-    for (const el of TEXT_ELEMENTS)
-        if (el && el.hasAttribute(varname)) {
-            el.innerText = text;
+/**
+ * Sets innerText of a special HTML element <val valname></val>
+ * @param { string } valname A name to refer to that <val> element
+ * @param { string } text The text to be set
+ */
+const setText = (valname, text, flaghtml = false) => {
+    for (const el of VAR_ELEMENTS)
+        if (el && el.hasAttribute(valname)) {
+            if (flaghtml)
+                el.innerHTML = text;
+            else
+                el.innerText = text;
             return;
         }
-    app.console.error(`preload.js: text element ${varname} not found`);
+    app.console.error(`preload.js: val element ${valname} not found`);
 }
 
-// sets HTML values to DOM var elements
-const setHTML = (varname, html) => {
-    for (const el of HTML_ELEMENTS)
-        if (el && el.hasAttribute(varname)) {
-            el.innerHTML = html;
-            return;
-        }
-    app.console.error(`preload.js: html element ${varname} not found`);
+/**
+ * Sets innerHTML of a special HTML element <val valname></val>
+ * @param { string } valname A name to refer to that <val> element
+ * @param { string } html The HTML string to be set
+ */
+const setHTML = (valname, html, flaghtml = true) => {
+    setText(valname, html, flaghtml);
 }
 
 const app = {
@@ -63,8 +67,8 @@ const app = {
 
 module.exports = {
     ipcRenderer,
-    TEXT_ELEMENTS,
-    HTML_ELEMENTS,
+    VAR_ELEMENTS,
+    VAR_ELEMENTS,
     populatePreloadElementList,
     setText,
     setHTML,

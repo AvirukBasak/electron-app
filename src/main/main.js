@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require('electron');
-const { ipcMain } = require('./interface.js');
+const { ipcMain } = require('./interface/ipcMain.js');
 const consl = require('console');
 const path = require('path');
 const fs = require('fs');

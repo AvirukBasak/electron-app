@@ -1,5 +1,5 @@
 # Electron App
-A test app amde in electron js
+A test app made w/ electron js
 
 ### Directories
 - `src/app` The app UI and front end logic directory

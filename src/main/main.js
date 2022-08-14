@@ -12,7 +12,7 @@ const createWindow = () => {
             preload: path.join(__dirname, 'preload.js')
         }
     });
-    mainWindow.loadFile('src/ui/index.html');
+    mainWindow.loadFile('src/app/index.html');
     mainWindow.webContents.openDevTools();
 }
 

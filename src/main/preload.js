@@ -1,18 +1,6 @@
-const {
-    populatePreloadElementList,
-    setText,
-    setHTML,
-    app
-} = require('./interface/ipcRenderer.js');
+const { populatePreloadElementList, app, main } = require('../app/index.js');
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', (windw, ev) => {
     populatePreloadElementList();
     main(app.argc, app.argv);
 });
-
-const main = (argc, argv) => {
-    app.console.log(`dirname = ${app.dirname}`);
-    app.console.log(`cwd = ${app.cwd}`);
-    for (const type of ['chrome', 'node', 'electron'])
-        setText(`${type}-version`, process.versions[type]);
-}
